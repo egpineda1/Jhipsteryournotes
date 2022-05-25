@@ -1,0 +1,27 @@
+{
+  "yournotesApp": {
+    "nota": {
+      "home": {
+        "title": "Notas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Nota",
+        "createOrEditLabel": "Crear o editar Nota",
+        "notFound": "Ningún Notas encontrado"
+      },
+      "created": "Un nuevo Nota ha sido creado con el identificador {{ param }}",
+      "updated": "Un Nota ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Nota ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Nota {{ id }}?"
+      },
+      "detail": {
+        "title": "Nota"
+      },
+      "id": "ID",
+      "nota": "Nota",
+      "observaciones": "Observaciones",
+      "asignatura": "Asignatura",
+      "usuario": "Usuario"
+    }
+  }
+}

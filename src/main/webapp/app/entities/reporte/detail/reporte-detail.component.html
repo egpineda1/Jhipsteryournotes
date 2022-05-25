@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="reporte">
+      <h2 data-cy="reporteDetailsHeading"><span ynotesTranslate="yournotesApp.reporte.detail.title">Reporte</span></h2>
+
+      <hr />
+
+      <ynotes-alert-error></ynotes-alert-error>
+
+      <ynotes-alert></ynotes-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ynotesTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ reporte.id }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.reporte.alerta">Alerta</span></dt>
+        <dd>
+          <span>{{ reporte.alerta }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.reporte.promedioFinal">Promedio Final</span></dt>
+        <dd>
+          <span>{{ reporte.promedioFinal }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.reporte.promedioParcial">Promedio Parcial</span></dt>
+        <dd>
+          <span>{{ reporte.promedioParcial }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.reporte.asignatura">Asignatura</span></dt>
+        <dd>
+          <span *ngFor="let asignatura of reporte.asignaturas; let last = last">
+            <a [routerLink]="['/asignatura', asignatura?.id, 'view']">{{ asignatura.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.reporte.aula">Aula</span></dt>
+        <dd>
+          <div *ngIf="reporte.aula">
+            <a [routerLink]="['/aula', reporte.aula?.id, 'view']">{{ reporte.aula?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.reporte.usuario">Usuario</span></dt>
+        <dd>
+          <div *ngIf="reporte.usuario">
+            <a [routerLink]="['/usuario', reporte.usuario?.id, 'view']">{{ reporte.usuario?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/reporte', reporte.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

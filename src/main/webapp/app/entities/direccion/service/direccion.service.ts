@@ -1,0 +1,67 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { isPresent } from 'app/core/util/operators';
+import { ApplicationConfigService } from 'app/core/config/application-config.service';
+import { createRequestOption } from 'app/core/request/request-util';
+import { IDireccion, getDireccionIdentifier } from '../direccion.model';
+
+export type EntityResponseType = HttpResponse<IDireccion>;
+export type EntityArrayResponseType = HttpResponse<IDireccion[]>;
+
+@Injectable({ providedIn: 'root' })
+export class DireccionService {
+  protected resourceUrl = this.applicationConfigService.getEndpointFor('api/direccions');
+
+  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
+
+  create(direccion: IDireccion): Observable<EntityResponseType> {
+    return this.http.post<IDireccion>(this.resourceUrl, direccion, { observe: 'response' });
+  }
+
+  update(direccion: IDireccion): Observable<EntityResponseType> {
+    return this.http.put<IDireccion>(`${this.resourceUrl}/${getDireccionIdentifier(direccion) as number}`, direccion, {
+      observe: 'response',
+    });
+  }
+
+  partialUpdate(direccion: IDireccion): Observable<EntityResponseType> {
+    return this.http.patch<IDireccion>(`${this.resourceUrl}/${getDireccionIdentifier(direccion) as number}`, direccion, {
+      observe: 'response',
+    });
+  }
+
+  find(id: number): Observable<EntityResponseType> {
+    return this.http.get<IDireccion>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  query(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IDireccion[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+
+  delete(id: number): Observable<HttpResponse<{}>> {
+    return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  addDireccionToCollectionIfMissing(
+    direccionCollection: IDireccion[],
+    ...direccionsToCheck: (IDireccion | null | undefined)[]
+  ): IDireccion[] {
+    const direccions: IDireccion[] = direccionsToCheck.filter(isPresent);
+    if (direccions.length > 0) {
+      const direccionCollectionIdentifiers = direccionCollection.map(direccionItem => getDireccionIdentifier(direccionItem)!);
+      const direccionsToAdd = direccions.filter(direccionItem => {
+        const direccionIdentifier = getDireccionIdentifier(direccionItem);
+        if (direccionIdentifier == null || direccionCollectionIdentifiers.includes(direccionIdentifier)) {
+          return false;
+        }
+        direccionCollectionIdentifiers.push(direccionIdentifier);
+        return true;
+      });
+      return [...direccionsToAdd, ...direccionCollection];
+    }
+    return direccionCollection;
+  }
+}

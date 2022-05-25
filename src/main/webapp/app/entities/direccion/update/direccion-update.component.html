@@ -1,0 +1,114 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="ynotes-direccion-heading"
+        data-cy="DireccionCreateUpdateHeading"
+        ynotesTranslate="yournotesApp.direccion.home.createOrEditLabel"
+      >
+        Create or edit a Direccion
+      </h2>
+
+      <div>
+        <ynotes-alert-error></ynotes-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ynotesTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.direccion.barrio" for="field_barrio">Barrio</label>
+          <input type="text" class="form-control" name="barrio" id="field_barrio" data-cy="barrio" formControlName="barrio" />
+          <div *ngIf="editForm.get('barrio')!.invalid && (editForm.get('barrio')!.dirty || editForm.get('barrio')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('barrio')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 30 }"
+            >
+              This field cannot be longer than 30 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.direccion.ciudad" for="field_ciudad">Ciudad</label>
+          <input type="text" class="form-control" name="ciudad" id="field_ciudad" data-cy="ciudad" formControlName="ciudad" />
+          <div *ngIf="editForm.get('ciudad')!.invalid && (editForm.get('ciudad')!.dirty || editForm.get('ciudad')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ciudad')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 30 }"
+            >
+              This field cannot be longer than 30 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.direccion.departamento" for="field_departamento">Departamento</label>
+          <input
+            type="text"
+            class="form-control"
+            name="departamento"
+            id="field_departamento"
+            data-cy="departamento"
+            formControlName="departamento"
+          />
+          <div
+            *ngIf="editForm.get('departamento')!.invalid && (editForm.get('departamento')!.dirty || editForm.get('departamento')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('departamento')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 25 }"
+            >
+              This field cannot be longer than 25 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.direccion.numeracion" for="field_numeracion">Numeracion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeracion"
+            id="field_numeracion"
+            data-cy="numeracion"
+            formControlName="numeracion"
+          />
+          <div *ngIf="editForm.get('numeracion')!.invalid && (editForm.get('numeracion')!.dirty || editForm.get('numeracion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('numeracion')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

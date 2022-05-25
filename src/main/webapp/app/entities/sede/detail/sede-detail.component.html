@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sede">
+      <h2 data-cy="sedeDetailsHeading"><span ynotesTranslate="yournotesApp.sede.detail.title">Sede</span></h2>
+
+      <hr />
+
+      <ynotes-alert-error></ynotes-alert-error>
+
+      <ynotes-alert></ynotes-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ynotesTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sede.id }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.sede.correoSede">Correo Sede</span></dt>
+        <dd>
+          <span>{{ sede.correoSede }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.sede.direccioSede">Direccio Sede</span></dt>
+        <dd>
+          <span>{{ sede.direccioSede }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.sede.nombreSede">Nombre Sede</span></dt>
+        <dd>
+          <span>{{ sede.nombreSede }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.sede.telefonoSede">Telefono Sede</span></dt>
+        <dd>
+          <span>{{ sede.telefonoSede }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sede', sede.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

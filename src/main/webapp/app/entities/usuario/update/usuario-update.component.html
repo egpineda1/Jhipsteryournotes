@@ -1,0 +1,194 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="ynotes-usuario-heading" data-cy="UsuarioCreateUpdateHeading" ynotesTranslate="yournotesApp.usuario.home.createOrEditLabel">
+        Create or edit a Usuario
+      </h2>
+
+      <div>
+        <ynotes-alert-error></ynotes-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ynotesTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.apellido" for="field_apellido">Apellido</label>
+          <input type="text" class="form-control" name="apellido" id="field_apellido" data-cy="apellido" formControlName="apellido" />
+          <div *ngIf="editForm.get('apellido')!.invalid && (editForm.get('apellido')!.dirty || editForm.get('apellido')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('apellido')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.codigo" for="field_codigo">Codigo</label>
+          <input type="text" class="form-control" name="codigo" id="field_codigo" data-cy="codigo" formControlName="codigo" />
+          <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codigo')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 20 }"
+            >
+              This field cannot be longer than 20 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.correo" for="field_correo">Correo</label>
+          <input type="text" class="form-control" name="correo" id="field_correo" data-cy="correo" formControlName="correo" />
+          <div *ngIf="editForm.get('correo')!.invalid && (editForm.get('correo')!.dirty || editForm.get('correo')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('correo')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 60 }"
+            >
+              This field cannot be longer than 60 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.edad" for="field_edad">Edad</label>
+          <input type="number" class="form-control" name="edad" id="field_edad" data-cy="edad" formControlName="edad" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.genero" for="field_genero">Genero</label>
+          <input type="text" class="form-control" name="genero" id="field_genero" data-cy="genero" formControlName="genero" />
+          <div *ngIf="editForm.get('genero')!.invalid && (editForm.get('genero')!.dirty || editForm.get('genero')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('genero')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 1 }"
+            >
+              This field cannot be longer than 1 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.identificacion" for="field_identificacion">Identificacion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="identificacion"
+            id="field_identificacion"
+            data-cy="identificacion"
+            formControlName="identificacion"
+          />
+          <div
+            *ngIf="
+              editForm.get('identificacion')!.invalid && (editForm.get('identificacion')!.dirty || editForm.get('identificacion')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('identificacion')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 12 }"
+            >
+              This field cannot be longer than 12 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.nombre" for="field_nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+          <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nombre')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.telefono" for="field_telefono">Telefono</label>
+          <input type="text" class="form-control" name="telefono" id="field_telefono" data-cy="telefono" formControlName="telefono" />
+          <div *ngIf="editForm.get('telefono')!.invalid && (editForm.get('telefono')!.dirty || editForm.get('telefono')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('telefono')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 12 }"
+            >
+              This field cannot be longer than 12 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.rol" for="field_rol">Rol</label>
+          <select class="form-control" id="field_rol" data-cy="rol" name="rol" formControlName="rol">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="rolOption.id === editForm.get('rol')!.value?.id ? editForm.get('rol')!.value : rolOption"
+              *ngFor="let rolOption of rolsSharedCollection; trackBy: trackRolById"
+            >
+              {{ rolOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.direccion" for="field_direccion">Direccion</label>
+          <select class="form-control" id="field_direccion" data-cy="direccion" name="direccion" formControlName="direccion">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="direccionOption.id === editForm.get('direccion')!.value?.id ? editForm.get('direccion')!.value : direccionOption"
+              *ngFor="let direccionOption of direccionsSharedCollection; trackBy: trackDireccionById"
+            >
+              {{ direccionOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.usuario.sede" for="field_sede">Sede</label>
+          <select class="form-control" id="field_sede" data-cy="sede" name="sede" formControlName="sede">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sedeOption.id === editForm.get('sede')!.value?.id ? editForm.get('sede')!.value : sedeOption"
+              *ngFor="let sedeOption of sedesSharedCollection; trackBy: trackSedeById"
+            >
+              {{ sedeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

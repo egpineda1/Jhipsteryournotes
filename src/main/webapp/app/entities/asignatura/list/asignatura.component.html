@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="AsignaturaHeading">
+    <span ynotesTranslate="yournotesApp.asignatura.home.title">Asignaturas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ynotesTranslate="yournotesApp.asignatura.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-asignatura"
+        [routerLink]="['/asignatura/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ynotesTranslate="yournotesApp.asignatura.home.createLabel"> Create a new Asignatura </span>
+      </button>
+    </div>
+  </h2>
+
+  <ynotes-alert-error></ynotes-alert-error>
+
+  <ynotes-alert></ynotes-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="asignaturas?.length === 0">
+    <span ynotesTranslate="yournotesApp.asignatura.home.notFound">No asignaturas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="asignaturas && asignaturas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ynotesTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span ynotesTranslate="yournotesApp.asignatura.codeAsignatura">Code Asignatura</span></th>
+          <th scope="col"><span ynotesTranslate="yournotesApp.asignatura.asignatura">Asignatura</span></th>
+          <th scope="col"><span ynotesTranslate="yournotesApp.asignatura.nota">Nota</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asignatura of asignaturas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/asignatura', asignatura.id, 'view']">{{ asignatura.id }}</a>
+          </td>
+          <td>{{ asignatura.codeAsignatura }}</td>
+          <td>{{ asignatura.asignatura }}</td>
+          <td>
+            <div *ngIf="asignatura.nota">
+              <a [routerLink]="['/nota', asignatura.nota?.id, 'view']">{{ asignatura.nota?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/asignatura', asignatura.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ynotesTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/asignatura', asignatura.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ynotesTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(asignatura)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ynotesTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

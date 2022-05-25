@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Reporte.
+    -->
+    <changeSet id="20220502232826-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="reporte_id"
+                                 baseTableName="rel_reporte__asignatura"
+                                 constraintName="fk_rel_reporte__asignatura__reporte_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reporte"/>
+
+        <addForeignKeyConstraint baseColumnNames="asignatura_id"
+                                 baseTableName="rel_reporte__asignatura"
+                                 constraintName="fk_rel_reporte__asignatura__asignatura_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="asignatura"/>
+
+        <addForeignKeyConstraint baseColumnNames="aula_id"
+                                 baseTableName="reporte"
+                                 constraintName="fk_reporte__aula_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="aula"/>
+
+        <addForeignKeyConstraint baseColumnNames="usuario_id"
+                                 baseTableName="reporte"
+                                 constraintName="fk_reporte__usuario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuario"/>
+    </changeSet>
+</databaseChangeLog>

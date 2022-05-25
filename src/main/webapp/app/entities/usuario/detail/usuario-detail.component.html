@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="usuario">
+      <h2 data-cy="usuarioDetailsHeading"><span ynotesTranslate="yournotesApp.usuario.detail.title">Usuario</span></h2>
+
+      <hr />
+
+      <ynotes-alert-error></ynotes-alert-error>
+
+      <ynotes-alert></ynotes-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ynotesTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ usuario.id }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.apellido">Apellido</span></dt>
+        <dd>
+          <span>{{ usuario.apellido }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.codigo">Codigo</span></dt>
+        <dd>
+          <span>{{ usuario.codigo }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.correo">Correo</span></dt>
+        <dd>
+          <span>{{ usuario.correo }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.edad">Edad</span></dt>
+        <dd>
+          <span>{{ usuario.edad }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.genero">Genero</span></dt>
+        <dd>
+          <span>{{ usuario.genero }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.identificacion">Identificacion</span></dt>
+        <dd>
+          <span>{{ usuario.identificacion }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ usuario.nombre }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.telefono">Telefono</span></dt>
+        <dd>
+          <span>{{ usuario.telefono }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.rol">Rol</span></dt>
+        <dd>
+          <div *ngIf="usuario.rol">
+            <a [routerLink]="['/rol', usuario.rol?.id, 'view']">{{ usuario.rol?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.direccion">Direccion</span></dt>
+        <dd>
+          <div *ngIf="usuario.direccion">
+            <a [routerLink]="['/direccion', usuario.direccion?.id, 'view']">{{ usuario.direccion?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.usuario.sede">Sede</span></dt>
+        <dd>
+          <div *ngIf="usuario.sede">
+            <a [routerLink]="['/sede', usuario.sede?.id, 'view']">{{ usuario.sede?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/usuario', usuario.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

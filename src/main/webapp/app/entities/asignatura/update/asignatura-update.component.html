@@ -1,0 +1,87 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="ynotes-asignatura-heading"
+        data-cy="AsignaturaCreateUpdateHeading"
+        ynotesTranslate="yournotesApp.asignatura.home.createOrEditLabel"
+      >
+        Create or edit a Asignatura
+      </h2>
+
+      <div>
+        <ynotes-alert-error></ynotes-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ynotesTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.asignatura.codeAsignatura" for="field_codeAsignatura"
+            >Code Asignatura</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="codeAsignatura"
+            id="field_codeAsignatura"
+            data-cy="codeAsignatura"
+            formControlName="codeAsignatura"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.asignatura.asignatura" for="field_asignatura">Asignatura</label>
+          <input
+            type="text"
+            class="form-control"
+            name="asignatura"
+            id="field_asignatura"
+            data-cy="asignatura"
+            formControlName="asignatura"
+          />
+          <div *ngIf="editForm.get('asignatura')!.invalid && (editForm.get('asignatura')!.dirty || editForm.get('asignatura')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('asignatura')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 40 }"
+            >
+              This field cannot be longer than 40 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.asignatura.nota" for="field_nota">Nota</label>
+          <select class="form-control" id="field_nota" data-cy="nota" name="nota" formControlName="nota">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="notaOption.id === editForm.get('nota')!.value?.id ? editForm.get('nota')!.value : notaOption"
+              *ngFor="let notaOption of notasCollection; trackBy: trackNotaById"
+            >
+              {{ notaOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

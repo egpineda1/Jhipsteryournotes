@@ -1,0 +1,27 @@
+{
+  "yournotesApp": {
+    "aula": {
+      "home": {
+        "title": "Aulas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Aula",
+        "createOrEditLabel": "Crear o editar Aula",
+        "notFound": "Ningún Aulas encontrado"
+      },
+      "created": "Un nuevo Aula ha sido creado con el identificador {{ param }}",
+      "updated": "Un Aula ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Aula ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Aula {{ id }}?"
+      },
+      "detail": {
+        "title": "Aula"
+      },
+      "id": "ID",
+      "capacidadMaxima": "Capacidad Maxima",
+      "grado": "Grado",
+      "salon": "Salon",
+      "reporte": "Reporte"
+    }
+  }
+}

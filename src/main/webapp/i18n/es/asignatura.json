@@ -1,0 +1,27 @@
+{
+  "yournotesApp": {
+    "asignatura": {
+      "home": {
+        "title": "Asignaturas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Asignatura",
+        "createOrEditLabel": "Crear o editar Asignatura",
+        "notFound": "Ningún Asignaturas encontrado"
+      },
+      "created": "Un nuevo Asignatura ha sido creado con el identificador {{ param }}",
+      "updated": "Un Asignatura ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Asignatura ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Asignatura {{ id }}?"
+      },
+      "detail": {
+        "title": "Asignatura"
+      },
+      "id": "ID",
+      "codeAsignatura": "Code Asignatura",
+      "asignatura": "Asignatura",
+      "nota": "Nota",
+      "reporte": "Reporte"
+    }
+  }
+}

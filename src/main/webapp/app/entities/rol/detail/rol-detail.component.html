@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="rol">
+      <h2 data-cy="rolDetailsHeading"><span ynotesTranslate="yournotesApp.rol.detail.title">Rol</span></h2>
+
+      <hr />
+
+      <ynotes-alert-error></ynotes-alert-error>
+
+      <ynotes-alert></ynotes-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ynotesTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ rol.id }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.rol.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ rol.descripcion }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/rol', rol.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

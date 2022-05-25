@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="ynotes-nota-heading" data-cy="NotaCreateUpdateHeading" ynotesTranslate="yournotesApp.nota.home.createOrEditLabel">
+        Create or edit a Nota
+      </h2>
+
+      <div>
+        <ynotes-alert-error></ynotes-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ynotesTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.nota.nota" for="field_nota">Nota</label>
+          <input type="number" class="form-control" name="nota" id="field_nota" data-cy="nota" formControlName="nota" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.nota.observaciones" for="field_observaciones">Observaciones</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observaciones"
+            id="field_observaciones"
+            data-cy="observaciones"
+            formControlName="observaciones"
+          />
+          <div
+            *ngIf="
+              editForm.get('observaciones')!.invalid && (editForm.get('observaciones')!.dirty || editForm.get('observaciones')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('observaciones')?.errors?.maxlength"
+              ynotesTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ynotesTranslate="yournotesApp.nota.usuario" for="field_usuario">Usuario</label>
+          <select class="form-control" id="field_usuario" data-cy="usuario" name="usuario" formControlName="usuario">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="usuarioOption.id === editForm.get('usuario')!.value?.id ? editForm.get('usuario')!.value : usuarioOption"
+              *ngFor="let usuarioOption of usuariosSharedCollection; trackBy: trackUsuarioById"
+            >
+              {{ usuarioOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

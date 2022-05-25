@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="asignatura">
+      <h2 data-cy="asignaturaDetailsHeading"><span ynotesTranslate="yournotesApp.asignatura.detail.title">Asignatura</span></h2>
+
+      <hr />
+
+      <ynotes-alert-error></ynotes-alert-error>
+
+      <ynotes-alert></ynotes-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ynotesTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ asignatura.id }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.asignatura.codeAsignatura">Code Asignatura</span></dt>
+        <dd>
+          <span>{{ asignatura.codeAsignatura }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.asignatura.asignatura">Asignatura</span></dt>
+        <dd>
+          <span>{{ asignatura.asignatura }}</span>
+        </dd>
+        <dt><span ynotesTranslate="yournotesApp.asignatura.nota">Nota</span></dt>
+        <dd>
+          <div *ngIf="asignatura.nota">
+            <a [routerLink]="['/nota', asignatura.nota?.id, 'view']">{{ asignatura.nota?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/asignatura', asignatura.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ynotesTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

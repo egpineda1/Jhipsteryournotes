@@ -1,0 +1,125 @@
+
+application {
+    config {
+        baseName yournotes
+        applicationType monolith
+        packageName co.edu.sena
+        authenticationType jwt
+        devDatabaseType mysql
+        prodDatabaseType mysql
+        cacheProvider no
+        buildTool maven
+        clientFramework angularX
+        enableTranslation true
+        nativeLanguage es
+        languages [en, es]
+        websocket false
+        //testFrameworks [cucumber]
+        //entitySuffix false
+        jhiPrefix ynotes
+        reactive false
+        serverPort 8080
+        searchEngine false
+        clientTheme vapor
+        //clientThemeVariant
+    }
+    entities *
+}
+
+
+
+entity Usuario{
+
+apellido String maxlength(50)
+codigo String maxlength(20)
+correo String maxlength(60)
+edad Float 
+genero  String maxlength(1)
+identificacion String maxlength(12)
+nombre String maxlength(50)
+telefono String maxlength(12)
+}
+
+entity Rol{
+descripcion String maxlength(50)
+}
+
+relationship OneToMany{
+	Rol to Usuario
+}
+
+entity Direccion{
+barrio String maxlength(30)
+ciudad String maxlength(30)
+departamento String maxlength(25)
+numeracion String maxlength(50)
+
+} 
+
+relationship OneToMany{
+	Direccion to Usuario
+}
+
+entity Sede{
+correoSede String maxlength(80)
+direccioSede String maxlength(50)
+nombreSede String maxlength(30)
+telefonoSede String maxlength(20)
+}
+
+relationship OneToMany{
+	Sede to Usuario
+}
+
+entity Asignatura{
+	codeAsignatura Float
+    asignatura String maxlength(40)
+}
+
+
+entity Reporte{
+ alerta String maxlength(30)
+ promedioFinal Double
+ promedioParcial Double
+ 
+}
+
+relationship ManyToMany{
+Reporte to Asignatura
+}
+
+entity Aula{
+	capacidadMaxima Float
+    grado Float
+    salon String maxlength(20)
+}
+	
+relationship OneToMany{
+
+	Aula to Reporte 
+}
+
+relationship OneToMany{
+	Usuario to Reporte
+}
+
+
+entity Nota{
+	nota Double
+    observaciones String maxlength(100)
+    
+}
+
+relationship OneToMany{
+	Usuario to Nota
+}
+
+relationship OneToOne{
+	Asignatura to Nota
+}
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+{
+  "yournotesApp": {
+    "sede": {
+      "home": {
+        "title": "Sedes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sede",
+        "createOrEditLabel": "Create or edit a Sede",
+        "notFound": "No Sedes found"
+      },
+      "created": "A new Sede is created with identifier {{ param }}",
+      "updated": "A Sede is updated with identifier {{ param }}",
+      "deleted": "A Sede is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sede {{ id }}?"
+      },
+      "detail": {
+        "title": "Sede"
+      },
+      "id": "ID",
+      "correoSede": "Correo Sede",
+      "direccioSede": "Direccio Sede",
+      "nombreSede": "Nombre Sede",
+      "telefonoSede": "Telefono Sede",
+      "usuario": "Usuario"
+    }
+  }
+}
