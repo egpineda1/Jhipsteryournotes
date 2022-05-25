@@ -1,0 +1,50 @@
+{
+  "applications": ["yournotes"],
+  "changelogDate": "20220502232826",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "reporte",
+  "fields": [
+    {
+      "fieldName": "alerta",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "promedioFinal",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "promedioParcial",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Reporte",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "asignatura",
+      "otherEntityRelationshipName": "reporte",
+      "ownerSide": true,
+      "relationshipName": "asignatura",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "aula",
+      "otherEntityRelationshipName": "reporte",
+      "relationshipName": "aula",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "reporte",
+      "relationshipName": "usuario",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

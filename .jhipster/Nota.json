@@ -1,0 +1,40 @@
+{
+  "applications": ["yournotes"],
+  "changelogDate": "20220502233026",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "nota",
+  "fields": [
+    {
+      "fieldName": "nota",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "observaciones",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Nota",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "asignatura",
+      "otherEntityRelationshipName": "nota",
+      "ownerSide": false,
+      "relationshipName": "asignatura",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "nota",
+      "relationshipName": "usuario",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

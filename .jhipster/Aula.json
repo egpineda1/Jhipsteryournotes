@@ -1,0 +1,37 @@
+{
+  "applications": ["yournotes"],
+  "changelogDate": "20220502232926",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "aula",
+  "fields": [
+    {
+      "fieldName": "capacidadMaxima",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "grado",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "salon",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Aula",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "reporte",
+      "otherEntityRelationshipName": "aula",
+      "relationshipName": "reporte",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

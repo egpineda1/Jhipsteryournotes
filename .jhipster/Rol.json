@@ -1,0 +1,29 @@
+{
+  "applications": ["yournotes"],
+  "changelogDate": "20220502232426",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "rol",
+  "fields": [
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Rol",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "rol",
+      "relationshipName": "usuario",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

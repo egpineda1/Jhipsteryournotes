@@ -1,0 +1,93 @@
+{
+  "applications": ["yournotes"],
+  "changelogDate": "20220502232326",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "usuario",
+  "fields": [
+    {
+      "fieldName": "apellido",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "correo",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "60"
+    },
+    {
+      "fieldName": "edad",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "genero",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1"
+    },
+    {
+      "fieldName": "identificacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "12"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "12"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Usuario",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "reporte",
+      "otherEntityRelationshipName": "usuario",
+      "relationshipName": "reporte",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "nota",
+      "otherEntityRelationshipName": "usuario",
+      "relationshipName": "nota",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "rol",
+      "otherEntityRelationshipName": "usuario",
+      "relationshipName": "rol",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "direccion",
+      "otherEntityRelationshipName": "usuario",
+      "relationshipName": "direccion",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "sede",
+      "otherEntityRelationshipName": "usuario",
+      "relationshipName": "sede",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

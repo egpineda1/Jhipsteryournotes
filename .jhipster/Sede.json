@@ -1,0 +1,47 @@
+{
+  "applications": ["yournotes"],
+  "changelogDate": "20220502232626",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "sede",
+  "fields": [
+    {
+      "fieldName": "correoSede",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "80"
+    },
+    {
+      "fieldName": "direccioSede",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "nombreSede",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "telefonoSede",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Sede",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "sede",
+      "relationshipName": "usuario",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

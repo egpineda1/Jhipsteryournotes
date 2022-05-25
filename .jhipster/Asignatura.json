@@ -1,0 +1,41 @@
+{
+  "applications": ["yournotes"],
+  "changelogDate": "20220502232726",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "asignatura",
+  "fields": [
+    {
+      "fieldName": "codeAsignatura",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "asignatura",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "40"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Asignatura",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "nota",
+      "otherEntityRelationshipName": "asignatura",
+      "ownerSide": true,
+      "relationshipName": "nota",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "reporte",
+      "otherEntityRelationshipName": "asignatura",
+      "ownerSide": false,
+      "relationshipName": "reporte",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,47 @@
+{
+  "applications": ["yournotes"],
+  "changelogDate": "20220502232526",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "direccion",
+  "fields": [
+    {
+      "fieldName": "barrio",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "ciudad",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "departamento",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "25"
+    },
+    {
+      "fieldName": "numeracion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Direccion",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "direccion",
+      "relationshipName": "usuario",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}
